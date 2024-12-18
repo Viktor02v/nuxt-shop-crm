@@ -3,11 +3,17 @@
 </script>
 
 <template>
-	<div class="">
-		Hi there
+	<div class="w-full">
+		<LayoutHeader>
+			<template #content>
+				NUXT-SHOP-CRM
+			</template>
+		</LayoutHeader>
+
+		<div>
+			
+		</div>
 	</div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

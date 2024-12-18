@@ -9,16 +9,8 @@ export const MENU_DATA:MenuData[] = [
 		url:'/',
 	},
 	{
-		icon:'fluent:receipt-28-regular',
-		url:'/collection',
-	}, 
-	{
-		icon: 'line-md:heart',
-		url:'/favorites'
-	},
-	{
-		icon: 'solar:cart-linear',
-		url:'/cart'
+		icon:'icons8:plus',
+		url:'/creation',
 	},
 	{
 		icon:'ep:goods',
