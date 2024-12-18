@@ -3,7 +3,7 @@
 </script>
 
 <template>
-	<div class="border-b pb-5">
+	<div class="border-b p-[24.5px]">
 		<h1 class="text-2xl text-center font-bold">
 			<slot name="content"/>
 		</h1>
