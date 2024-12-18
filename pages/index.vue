@@ -36,4 +36,6 @@ const { data: womanShoes, isPending: isPendingWoman, isError: isErrorWoman } = u
 	</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
