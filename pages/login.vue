@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid'
 import { account } from '~/lib/appwrite';
 
 useSeoMeta({
-	title: "Login | Blogger",
+	title: "Login | CRM",
 });
 
 // User data
@@ -41,7 +41,7 @@ const login = async () => {
 		name.value = '';
 
 		// Navigate to home page
-		await router.push('/blogs');
+		await router.push('/');
 	} catch (error) {
 		alert(`Login failed:, ${error}`);
 	} finally {
@@ -49,21 +49,12 @@ const login = async () => {
 	}
 };
 
-// Function to Register
-const register = async () => {
-	try {
-		await account.create(uuid(), email.value, password.value, name.value)
 
-		await login();
-	} catch (error) {
-		alert(`Registration failed:, ${error}`);
-	}
-}
 </script>
 
 <template>
-	<div class="flex items-center justify-center min-h-screen w-screen ">
-		<div class="rounded bg-sidebarBg w-10/12 md:w-1/3 p-5 ">
+	<div class="flex items-center justify-center h-screen ">
+		<div class="rounded border bg-gradient-to-b from-[#020817] to-[#0F172A] w-10/12 md:w-1/3 p-5 ">
 			<h1 class="text-2xl text-white hover:text-colorSidebar font-bold text-center mb-5">Login</h1>
 
 			<form @keyup.enter="login">
@@ -73,8 +64,6 @@ const register = async () => {
 
 				<div class="flex items-center justify-center gap-5">
 					<UiButton @click="login" class="text-white" variant="secondary" type="button">Login
-					</UiButton>
-					<UiButton @click="register" class="text-white" variant="secondary" type="button">Register
 					</UiButton>
 				</div>
 			</form>
