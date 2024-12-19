@@ -9,27 +9,92 @@ const { data: womanShoes, isPending: isPendingWoman, isError: isErrorWoman } = u
 
 <template>
 	<div class="w-full">
+		<!-- Header -->
+		<LayoutHeaderSecondary>
+			<template #content-secondary>
+				Collections
+			</template>
+		</LayoutHeaderSecondary>
 
-		<div v-if="manShoes" class="mt-5">
-			<div class="w-full items-center justify-between flex gap-5">
-				<div class="w-1/2 border">
+		<div class="w-full">
 
-				</div>
+			<div class="p-3 w-full">
+				<h2 class="text-[1.3rem] text-center p-2 border rounded mb-2 mt-5">Man Items</h2>
+				<UiTable class="border-2 bg-gradient-to-l from-[#020817] to-[#0F172A] ">
+					<UiTableCaption>{{ manShoes?.length }} items</UiTableCaption>
+					<UiTableHeader>
+						<UiTableRow>
+							<UiTableHead class="w-[100px]">
+								Name
+							</UiTableHead>
+							<UiTableHead>Vendor</UiTableHead>
+							<UiTableHead class="text-right">Foto</UiTableHead>
+							<UiTableHead class="text-right">
+								Price
+							</UiTableHead>
+						</UiTableRow>
+					</UiTableHeader>
+					<UiTableBody v-for="shoes in manShoes " :key="shoes.$id" class="border-b">
+						<UiTableRow class="text-[1rem] hover:translate-x-2 transition-all duration-500">
+							<UiTableCell class="font-medium border-r">
+								{{ shoes.name }}
+							</UiTableCell>
+							<UiTableCell class="border-r">{{ shoes.vendor }}</UiTableCell>
+							<UiTableCell class="flex">
+								<div class="w-full flex items-cetner justify-end ">
+									<NuxtImg :src="shoes.foto_url" width="60" />
+								</div>
+							</UiTableCell>
+							<UiTableCell class="text-right">
+								{{ shoes.price }} UAN
+							</UiTableCell>
+							<UiTableCell class="text-right">
+								{{ shoes.price }} UAN
+							</UiTableCell>
+						</UiTableRow>
+					</UiTableBody>
+				</UiTable>
+			</div>
 
-				<div class="w-1/2 border">
-					<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 p-5">
-						<div v-for="shoes in womanShoes" :key="shoes.$id" class="">
-							<div class="h-[100px] hover:scale-110 transition-all duration-500 p-5 border rounded">
-								<NuxtImg :src="shoes.foto_url" class="w-full  h-full object-cover" />
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="p-3 w-full">
+				<h2 class="text-[1.3rem] text-center p-2 border rounded  mb-2 mt-5">Woman Items</h2>
+				<UiTable class="border-2 bg-gradient-to-r from-[#020817] to-[#0F172A]">
+					<UiTableCaption>{{ womanShoes?.length }} items</UiTableCaption>
+					<UiTableHeader>
+						<UiTableRow>
+							<UiTableHead class="w-[100px]">
+								Name
+							</UiTableHead>
+							<UiTableHead>Vendor</UiTableHead>
+							<UiTableHead class="text-right">Foto</UiTableHead>
+							<UiTableHead class="text-right">
+								Price
+							</UiTableHead>
+						</UiTableRow>
+					</UiTableHeader>
+					<UiTableBody v-for="shoes in womanShoes " :key="shoes.$id" class="border-b">
+						<UiTableRow class="text-[1rem] hover:translate-x-2 transition-all duration-500">
+							<UiTableCell class=" border-r">
+								{{ shoes.name }}
+							</UiTableCell>
+							<UiTableCell class="border-r ">{{ shoes.vendor }}</UiTableCell>
+							<UiTableCell class="flex">
+								<div class="w-full flex items-cetner justify-end ">
+									<NuxtImg :src="shoes.foto_url" width="60" />
+								</div>
+							</UiTableCell>
+							<UiTableCell class="text-right">
+								{{ shoes.price }} UAN
+							</UiTableCell>
+							<UiTableCell class="text-right">
+
+							</UiTableCell>
+						</UiTableRow>
+					</UiTableBody>
+				</UiTable>
 			</div>
 		</div>
 	</div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
