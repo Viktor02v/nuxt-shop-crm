@@ -27,10 +27,5 @@ export const MENU_DATA:MenuData[] = [
 	{
 		icon: 'radix-icons:question-mark',
 		url:'/help'
-	},
-	{
-		icon: 'bx:log-out-circle',
-		url:'/login'
 	}
-	
 ]
