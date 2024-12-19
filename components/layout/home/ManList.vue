@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { useGetManShoes } from "@/composables/useGetManShoes"
 
-const { data: manShoes, isPending, isError } = useGetManShoes()
+const { data: manShoes, isPending, isError, error } = useGetManShoes()
 </script>
 
 <template>
-	<div>
-		<h2 class="text-[1.3rem] text-center p-2 bg-gradient-to-b from-[#020817] to-[#0F172A] border rounded mb-2 mt-5">Man Items</h2>
+	<div v-if="isPending">
+		Loading...
+	</div>
+	
+	<div v-else-if="manShoes">
+		<h2 class="text-[1.3rem] text-center p-2 bg-gradient-to-b from-[#020817] to-[#0F172A] border rounded mb-2 mt-5">
+			Man Items</h2>
 		<UiTable class="border-2 bg-gradient-to-l from-[#020817] to-[#0F172A] ">
 			<UiTableCaption>{{ manShoes?.length }} items</UiTableCaption>
 			<UiTableHeader>
@@ -44,8 +49,13 @@ const { data: manShoes, isPending, isError } = useGetManShoes()
 			</UiTableBody>
 		</UiTable>
 	</div>
+
+	<div v-else-if="isError">
+		{{ error?.message }}
+	</div>
 </template>
 
 
 
-<style scoped></style>
+<style scoped>
+</style>
