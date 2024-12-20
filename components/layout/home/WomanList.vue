@@ -9,7 +9,7 @@ const { data: womanShoes, isPending: isPending, isError: isError, error } = useG
 		Loading...
 	</div>
 
-	<div v-else-if="womanShoes">
+	<div v-else-if="womanShoes" class="animation">
 		<h2 class="text-[1.3rem] text-center p-2 border bg-gradient-to-b from-[#020817] to-[#0F172A] rounded  mb-2 mt-5">
 			Woman Items</h2>
 		<UiTable class="border-2 bg-gradient-to-r from-[#020817] to-[#0F172A]">
@@ -59,4 +59,19 @@ const { data: womanShoes, isPending: isPending, isError: isError, error } = useG
 
 
 <style scoped>
+@keyframes show {
+	from {
+		transform: scale(0.5) translateY(-30px);
+		opacity: 0.4;
+	}
+
+	to {
+		transform: scale(1) translateY(0);
+		opacity: 1;
+	}
+}
+
+.animation {
+	animation: show 0.6s ease-in-out;
+}
 </style>

@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { MENU_DATA } from '~/components/layout/sidebar/menu.data'
-import { useMenuStore } from '@/store/menu.store';
+
 import { useIsLoadingStore, useAuthStore } from '@/store/auth.store';
 import { account } from '~/lib/appwrite';
 
-const menuStore = useMenuStore()
 const authStore = useAuthStore();
 const isLoadingStore = useIsLoadingStore();
 const route = useRoute();
@@ -37,4 +36,5 @@ const handleLogOut = async () => {
 
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

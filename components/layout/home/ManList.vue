@@ -8,8 +8,8 @@ const { data: manShoes, isPending, isError, error } = useGetManShoes()
 	<div v-if="isPending">
 		Loading...
 	</div>
-	
-	<div v-else-if="manShoes">
+
+	<div v-else-if="manShoes" class="animation">
 		<h2 class="text-[1.3rem] text-center p-2 bg-gradient-to-b from-[#020817] to-[#0F172A] border rounded mb-2 mt-5">
 			Man Items</h2>
 		<UiTable class="border-2 bg-gradient-to-l from-[#020817] to-[#0F172A] ">
@@ -58,4 +58,19 @@ const { data: manShoes, isPending, isError, error } = useGetManShoes()
 
 
 <style scoped>
+@keyframes show {
+	from {
+		transform: scale(0.5) translateY(-30px);
+		opacity: 0.4;
+	}
+
+	to {
+		transform: scale(1) translateY(0);
+		opacity: 1;
+	}
+}
+
+.animation {
+	animation: show 0.6s ease-in-out;
+}
 </style>

@@ -30,4 +30,5 @@ const toggleMenu = () => {
 	</aside>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
