@@ -16,7 +16,6 @@ defineProps({
 
 const emit = defineEmits(["update:formValues"]);
 
-
 const { mutate, isPending } = useCreateShoesMan();
 const { mutate: mutateWoman, isPending: isPendingWoman } = useCreateShoesWoman();
 const { handleSubmit, defineField, handleReset, setFieldValue, values } = useForm();
@@ -45,6 +44,11 @@ const handleFileChange = (event: InputFileEvent, field: keyof ItemMan) => {
 
 const addShoes = (type: "man" | "woman") => {
 	handleSubmit((values) => {
+		if (!values.name || !values.vendor || !values.price || !values.description || !values.foto_url) {
+			alert("Please fill out all the fields before creating an item.");
+			return;
+		}
+		
 		const shoes: ItemMan = {
 			name: values.name,
 			price: parseFloat(values.price),
