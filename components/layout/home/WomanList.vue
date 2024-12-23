@@ -1,21 +1,16 @@
 <script setup lang="ts">
 import { useGetWomanShoes } from "@/composables/useGetWomanShoes"
 import { useDeleteWomanShoes } from "@/composables/useDeleteWomanShoes"
-import { useIsLoadingStore } from '@/store/auth.store';
-
-const isLoadingStore = useIsLoadingStore();
+import { useHandleDelete } from "@/composables/useHandleDelete"
 
 const { data: womanShoes, isPending: isPending, isError: isError, error } = useGetWomanShoes()
 const { mutate, isPending: isDeleting, isError: isErrorDeleting, error: errorDeleting } = useDeleteWomanShoes()
+const { handleDelete } = useHandleDelete();
 
-const handleDelete = (shoesId: string) => {
-	isLoadingStore.set(true);
-	if (confirm('Are you sure you want to delete this shoes?')) {
-		mutate(shoesId, {
-			onError: (errorDeleting) => alert(`Failed to delete: ${errorDeleting.message}`),
-		});
-	};
-}
+
+const onDelete = (shoesId: string) => {
+	handleDelete(shoesId, mutate);
+};
 </script>
 
 <template>
@@ -55,7 +50,7 @@ const handleDelete = (shoesId: string) => {
 						{{ shoes.price }} UAN
 					</UiTableCell>
 					<UiTableCell class="text-right">
-						<UiButton @click="handleDelete(shoes.$id)" class="bg-red-500 text-white hover:bg-red-700 border">
+						<UiButton @click="onDelete(shoes.$id)" class="bg-red-500 text-white hover:bg-red-700 border">
 							<Icon name="weui:delete-outlined" size="25" />
 						</UiButton>
 					</UiTableCell>
