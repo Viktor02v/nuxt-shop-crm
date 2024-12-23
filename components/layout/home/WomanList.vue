@@ -1,7 +1,21 @@
 <script setup lang="ts">
 import { useGetWomanShoes } from "@/composables/useGetWomanShoes"
+import { useDeleteWomanShoes } from "@/composables/useDeleteWomanShoes"
+import { useIsLoadingStore } from '@/store/auth.store';
+
+const isLoadingStore = useIsLoadingStore();
 
 const { data: womanShoes, isPending: isPending, isError: isError, error } = useGetWomanShoes()
+const { mutate, isPending: isDeleting, isError: isErrorDeleting, error: errorDeleting } = useDeleteWomanShoes()
+
+const handleDelete = (shoesId: string) => {
+	isLoadingStore.set(true);
+	if (confirm('Are you sure you want to delete this shoes?')) {
+		mutate(shoesId, {
+			onError: (errorDeleting) => alert(`Failed to delete: ${errorDeleting.message}`),
+		});
+	};
+}
 </script>
 
 <template>
@@ -41,7 +55,7 @@ const { data: womanShoes, isPending: isPending, isError: isError, error } = useG
 						{{ shoes.price }} UAN
 					</UiTableCell>
 					<UiTableCell class="text-right">
-						<UiButton class="bg-red-500 text-white hover:bg-red-700 border">
+						<UiButton @click="handleDelete(shoes.$id)" class="bg-red-500 text-white hover:bg-red-700 border">
 							<Icon name="weui:delete-outlined" size="25" />
 						</UiButton>
 					</UiTableCell>
@@ -51,7 +65,7 @@ const { data: womanShoes, isPending: isPending, isError: isError, error } = useG
 	</div>
 
 	<div v-else-if="isError">
-		{{error?.message  }}
+		{{ error?.message }}
 	</div>
 
 </template>
