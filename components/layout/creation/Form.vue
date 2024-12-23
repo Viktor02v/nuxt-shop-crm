@@ -82,7 +82,7 @@ watch(
 		<form @submit.prevent class="flex flex-col gap-2">
 			<div>
 				<img v-if="values.foto_url || isUploadImagePending" :src="values.foto_url" alt="" width="80" height="50"
-					class="rounded-full border my-4 hover:scale-110 transition-all duration-500 hover:ring-1" />
+					class="rounded-full border my-4 hover:scale-110 p-2 transition-all duration-500 hover:ring-1" />
 				<UiInput type="file" @change="handleFileChange($event, 'foto_url')" />
 			</div>
 			<UiInput v-model="name" v-bind="nameAttrs" placeholder="Name..." type="text" />

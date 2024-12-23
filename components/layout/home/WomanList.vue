@@ -13,8 +13,8 @@ const onDelete = (shoesId: string) => handleDelete(shoesId, mutate);
 </script>
 
 <template>
-	<div v-if="isPending">
-		Loading...
+<div v-if="isPending">
+		Woman Collection is Loading...
 	</div>
 
 	<div v-else-if="womanShoes" class="animation">

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+useSeoMeta({
+	title:'Creation | CRM',
+})
+
 const formValues = ref({
 	name: "",
 	vendor: "",

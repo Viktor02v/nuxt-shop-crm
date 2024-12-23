@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { useGetManShoes } from "@/composables/useGetManShoes"
 import { useDeleteManShoes } from "@/composables/useDeleteManShoes"
-import {useHandleDelete} from "@/composables/useHandleDelete"
+import { useHandleDelete } from "@/composables/useHandleDelete"
 
 const { data: manShoes, isPending, isError, error } = useGetManShoes()
 
 const { mutate, isPending: isDeleting, isError: isErrorDeleting, error: errorDeleting } = useDeleteManShoes()
-const {handleDelete} = useHandleDelete()
+const { handleDelete } = useHandleDelete()
 
-const onDelete = (shoesId:string) => handleDelete(shoesId, mutate);
+const onDelete = (shoesId: string) => handleDelete(shoesId, mutate);
+
 </script>
 
 <template>
 	<div v-if="isPending">
-		Loading...
+		Man Collection is Loading...
 	</div>
-
 	<div v-else-if="manShoes" class="animation">
 		<h2 class="text-[1.3rem] text-center p-2 bg-gradient-to-b from-[#020817] to-[#0F172A] border rounded mb-2 mt-5">
 			Man Items</h2>
