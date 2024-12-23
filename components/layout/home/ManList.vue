@@ -3,16 +3,12 @@ import { useGetManShoes } from "@/composables/useGetManShoes"
 import { useDeleteManShoes } from "@/composables/useDeleteManShoes"
 import {useHandleDelete} from "@/composables/useHandleDelete"
 
-
-
 const { data: manShoes, isPending, isError, error } = useGetManShoes()
 
 const { mutate, isPending: isDeleting, isError: isErrorDeleting, error: errorDeleting } = useDeleteManShoes()
 const {handleDelete} = useHandleDelete()
 
-const onDelete = (shoesId:string) =>{
-	handleDelete(shoesId, mutate)
-}
+const onDelete = (shoesId:string) => handleDelete(shoesId, mutate);
 </script>
 
 <template>

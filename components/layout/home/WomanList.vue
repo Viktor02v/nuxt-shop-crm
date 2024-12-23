@@ -8,9 +8,8 @@ const { mutate, isPending: isDeleting, isError: isErrorDeleting, error: errorDel
 const { handleDelete } = useHandleDelete();
 
 
-const onDelete = (shoesId: string) => {
-	handleDelete(shoesId, mutate);
-};
+const onDelete = (shoesId: string) => handleDelete(shoesId, mutate);
+
 </script>
 
 <template>
