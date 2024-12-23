@@ -42,7 +42,7 @@ const { data: womanShoes, isPending: isPending, isError: isError, error } = useG
 					</UiTableCell>
 					<UiTableCell class="text-right">
 						<UiButton class="bg-red-500 text-white hover:bg-red-700 border">
-							Delete
+							<Icon name="weui:delete-outlined" size="25" />
 						</UiButton>
 					</UiTableCell>
 				</UiTableRow>

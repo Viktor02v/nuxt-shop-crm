@@ -1,7 +1,23 @@
 <script setup lang="ts">
 import { useGetManShoes } from "@/composables/useGetManShoes"
+import { useDeleteManShoes } from "@/composables/useDeleteManShoes"
+import { useIsLoadingStore } from '@/store/auth.store';
+
+const isLoadingStore = useIsLoadingStore();
 
 const { data: manShoes, isPending, isError, error } = useGetManShoes()
+
+const { mutate, isPending: isDeleting, isError: isErrorDeleting, error: errorDeleting } = useDeleteManShoes()
+
+
+const handleDelete = (shoesId: string) => {
+	isLoadingStore.set(true)
+	if (confirm('Are you sure you want to delete this shoes?')) {
+		mutate(shoesId, {
+			onError: (errorDeleting) => alert(`Failed to delete: ${errorDeleting.message}`),
+		});
+	};
+}
 </script>
 
 <template>
@@ -41,8 +57,8 @@ const { data: manShoes, isPending, isError, error } = useGetManShoes()
 						{{ shoes.price }} UAN
 					</UiTableCell>
 					<UiTableCell class="text-right">
-						<UiButton class="bg-red-500 text-white hover:bg-red-700 border">
-							Delete
+						<UiButton @click="handleDelete(shoes.$id)" class="bg-red-500 text-white hover:bg-red-700 border">
+							<Icon name="weui:delete-outlined" size="25" />
 						</UiButton>
 					</UiTableCell>
 				</UiTableRow>
