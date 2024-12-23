@@ -15,7 +15,6 @@ export function useUpdateOrderStatus() {
 			});
 		},
 		onSuccess() {
-			  // Invalidate queries related to orders to refetch updated data
 			queryClient.invalidateQueries(["orders"]);
 		}
 	});

@@ -35,7 +35,7 @@ const { selectedStatus, handleStatusChange, isPending, isErrorUpdating } = useHa
 					</UiTableRow>
 				</UiTableHeader>
 				<UiTableBody v-for="order in orders" :key="order.$id"
-					class="border-b hover:ring-2 hover:ring-indigo-500 hover:scale-95 transition-all duration-500">
+					class="border-b hover:ring-2 hover:ring-indigo-500 scale-95 hover:scale-100 transition-all duration-500">
 					<UiTableRow>
 						<UiTableCell class="font-medium">{{ order.userId }}</UiTableCell>
 						<UiTableCell>{{ order.userName }}</UiTableCell>
