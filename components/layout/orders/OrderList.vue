@@ -9,7 +9,7 @@ const { selectedStatus, handleStatusChange, isPending, isErrorUpdating } = useHa
 
 <template>
 	<div v-if="orders && orders?.length >= 1" id="order-list"
-		class="border border-indigo-500 bg-gradient-to-b from-[#020817] to-[#0F172A] rounded p-5">
+		class="border border-indigo-500 bg-gradient-to-b from-[#020817] to-[#0F172A] rounded p-5 animation">
 		<div>
 			<div class="relative flex items-center justify-center">
 				<h2 class="font-bold text-[1.8rem] mb-5">Order List</h2>
@@ -35,7 +35,7 @@ const { selectedStatus, handleStatusChange, isPending, isErrorUpdating } = useHa
 					</UiTableRow>
 				</UiTableHeader>
 				<UiTableBody v-for="order in orders" :key="order.$id"
-					class="border-b hover:ring-2 hover:ring-indigo-500 scale-95 hover:scale-100 transition-all duration-500">
+					class="border-b hover:ring-2 hover:ring-indigo-500 scale-95 hover:scale-100 transition-all duration-500 animation">
 					<UiTableRow>
 						<UiTableCell class="font-medium">{{ order.userId }}</UiTableCell>
 						<UiTableCell>{{ order.userName }}</UiTableCell>
@@ -68,4 +68,20 @@ const { selectedStatus, handleStatusChange, isPending, isErrorUpdating } = useHa
 	</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+@keyframes show {
+	from {
+		transform: scale(0.5) translateY(-30px);
+		opacity: 0.4;
+	}
+
+	to {
+		transform: scale(1) translateY(0);
+		opacity: 1;
+	}
+}
+
+.animation {
+	animation: show 0.6s ease-in-out;
+}
+</style>

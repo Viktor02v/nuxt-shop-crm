@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { useGetConfirmedOrders } from "@/composables/useGetConfirmedOrders"
+import { useGetShippedOrders } from "@/composables/useGetShippedOrders"
 
-const { data: confirmedOrders, isLoading:isLoadnigConfirmed, isError:isErrorConfirmed } = useGetConfirmedOrders()
+const { data: shippedOrders, isLoading:isLoadnigShipped, isError:isErrorShipped } = useGetShippedOrders()
 
 const { selectedStatus, handleStatusChange, isPending, isErrorUpdating } = useHandleStatusChange();
 </script>
 
 <template>
-		<div v-if="confirmedOrders && confirmedOrders?.length >= 1" id="order-list"
-			class="border border-green-500 bg-gradient-to-b from-[#020817] to-[#0F172A] rounded p-5 animation">
+		<div v-if="shippedOrders && shippedOrders?.length >= 1" id="order-list"
+			class="border border-violet-900 bg-gradient-to-b from-[#020817] to-[#0F172A] rounded p-5 animation">
 			<div>
 				<div class="relative flex items-center justify-center">
-					<h2 class="font-bold text-[1.8rem] mb-5">Confirmed Orders</h2>
+					<h2 class="font-bold text-[1.8rem] mb-5">Shipped Orders</h2>
 					<div
-						class="absolute right-2 text-end flex rounded border hover:ring-2 hover:ring-green-500 p-2  transition-all duration-300 gap-2">
-						Items:<span>{{ confirmedOrders?.length }}</span></div>
+						class="absolute right-2 text-end flex rounded border hover:ring-2 hover:ring-violet-900 p-2  transition-all duration-300 gap-2">
+						Items:<span>{{ shippedOrders?.length }}</span></div>
 				</div>
 
 				<UiTable class="border rounded">
@@ -36,8 +36,8 @@ const { selectedStatus, handleStatusChange, isPending, isErrorUpdating } = useHa
 							</UiTableHead>
 						</UiTableRow>
 					</UiTableHeader>
-					<UiTableBody v-for="order in confirmedOrders" :key="order.$id"
-						class="border-b hover:ring-2 hover:ring-green-500 hover:scale-95   transition-all duration-500 animation">
+					<UiTableBody v-for="order in shippedOrders" :key="order.$id"
+						class="border-b hover:ring-2 hover:ring-violet-900  hover:scale-95   transition-all duration-500 animation">
 						<UiTableRow>
 							<UiTableCell class="font-medium">
 								{{ order.userId }}
@@ -53,17 +53,6 @@ const { selectedStatus, handleStatusChange, isPending, isErrorUpdating } = useHa
 								{{ order.totalPrice }} UAN
 							</UiTableCell>
 							<UiTableCell class="text-right">
-
-								<UiSelect v-model="selectedStatus" @update:model-value="handleStatusChange(order.$id)">
-								<UiSelectTrigger>
-								</UiSelectTrigger>
-								<UiSelectContent>
-									<UiSelectGroup>
-										<UiSelectItem value="shipped">Ship</UiSelectItem>
-										<UiSelectItem v-if="order.status === 'confirmed'" value="pending">Unconfirm</UiSelectItem>
-									</UiSelectGroup>
-								</UiSelectContent>
-							</UiSelect>
 							</UiTableCell>
 						</UiTableRow>
 					</UiTableBody>
