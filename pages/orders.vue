@@ -12,11 +12,21 @@ const { data: orders, isLoading, isError } = useGetOrders()
 			</template>
 		</LayoutHeaderSecondary>
 
-		<LayoutOrdersOrderList class="mb-10" />
+		<!-- Loading State -->
+		<div v-if="isLoading" class="text-center">Loading orders...</div>
 
-		<LayoutOrdersConfirmedOrderList class="mb-10" />
+		<!-- Error State -->
+		<div v-if="isError" class="text-center text-red-500">
+			There was an error loading the orders. Please try again.
+		</div>
 
-		<LayoutOrdersShippedOrderList class="mb-10" />
+		<div v-else>
+			<LayoutOrdersOrderList class="mb-10" />
+
+			<LayoutOrdersConfirmedOrderList class="mb-10" />
+
+			<LayoutOrdersShippedOrderList class="mb-10" />
+		</div>
 	</div>
 </template>
 

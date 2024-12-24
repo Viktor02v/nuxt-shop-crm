@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useGetOrders } from "@/composables/useGetOrders";
-import {useHandleStatusChange} from "@/composables/useHandleStatusChange"
+import { useHandleStatusChange } from "@/composables/useHandleStatusChange"
 
 const { data: orders, isLoading, isError } = useGetOrders();
 
@@ -8,7 +8,14 @@ const { selectedStatus, handleStatusChange, isPending, isErrorUpdating } = useHa
 </script>
 
 <template>
-	<div v-if="orders && orders?.length >= 1" id="order-list"
+	<div v-if="isLoading" class="text-center">Loading orders...</div>
+
+	<!-- Error State -->
+	<div v-else-if="isError" class="text-center text-red-500">
+		There was an error loading the orders. Please try again.
+	</div>
+
+	<div v-else-if="orders && orders?.length >= 1" id="order-list"
 		class="border border-indigo-500 bg-gradient-to-b from-[#020817] to-[#0F172A] rounded p-5 animation">
 		<div>
 			<div class="relative flex items-center justify-center">
