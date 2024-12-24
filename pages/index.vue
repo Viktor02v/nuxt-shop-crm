@@ -1,7 +1,10 @@
 <script setup lang="ts">
 useSeoMeta({
-	title:'Home | CRM'
-})
+	title: 'Home | CRM',
+	description: 'Explore the latest collections in our CRM application.',
+	ogTitle: 'Home | CRM',
+	ogDescription: 'Discover collections for men and women on our CRM platform.',
+});
 </script>
 
 <template>
@@ -15,14 +18,16 @@ useSeoMeta({
 
 		<!-- ManList -->
 		<div class="p-3 w-full">
-			<LazyLayoutHomeManList />
+			<LazyLayoutHomeManList type="man" />
 		</div>
-		
+
 		<!-- WomanList -->
 		<div class="p-3 w-full">
-			<LazyLayoutHomeWomanList />
+			<LazyLayoutHomeWomanList type="woman" />
 		</div>
 	</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
