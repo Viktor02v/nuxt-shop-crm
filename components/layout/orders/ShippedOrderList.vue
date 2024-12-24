@@ -11,7 +11,7 @@ const { selectedStatus, handleStatusChange, isPending, isErrorUpdating } = useHa
 			class="border border-violet-900 bg-gradient-to-b from-[#020817] to-[#0F172A] rounded p-5 animation">
 			<div>
 				<div class="relative flex items-center justify-center">
-					<h2 class="font-bold text-[1.8rem] mb-5">Shipped Orders</h2>
+					<h2 class="font-bold text-[1.8rem] mb-5">Shipped</h2>
 					<div
 						class="absolute right-2 text-end flex rounded border hover:ring-2 hover:ring-violet-900 p-2  transition-all duration-300 gap-2">
 						Items:<span>{{ shippedOrders?.length }}</span></div>

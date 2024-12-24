@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { useGetOrders } from "@/composables/useGetOrders"
-import { useGetConfirmedOrders } from "@/composables/useGetConfirmedOrders"
 
 const { data: orders, isLoading, isError } = useGetOrders()
-const { data: confirmedOrders, isLoading: isLoadnigConfirmed, isError: isErrorConfirmed } = useGetConfirmedOrders()
 </script>
 
 <template>
