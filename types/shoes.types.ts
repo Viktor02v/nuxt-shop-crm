@@ -3,10 +3,10 @@ export interface ItemMan{
 	description:string
 	vendor:string
 	price:number
-	foto_url: string
-	isFavorite:boolean
-	isAdded:boolean
-	isMan:boolean
+	foto_url?: string
+	isFavorite?:boolean
+	isAdded?:boolean
+	isMan?:boolean
 }
 
 export interface ItemWoman{
@@ -15,9 +15,9 @@ export interface ItemWoman{
 	vendor:string
 	price:number
 	foto_url: string
-	isFavorite:boolean
-	isAdded:boolean
-	isWoman:boolean
+	isFavorite?:boolean
+	isAdded?:boolean
+	isWoman?:boolean
 }
 
 
@@ -59,5 +59,7 @@ export interface ItemOrder{
 	userRegion:string
 }
 
-
+export interface InputFileEvent extends Event {
+	target: HTMLInputElement;
+}
 
