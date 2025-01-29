@@ -8,7 +8,7 @@ export function useCreateShoesWoman(){
 	return useMutation({
 		mutationKey:['createShoesWoman'],
 		mutationFn: async (shoes) => {
-			return DB.createDocument(DB_ID, COLLECTION_WOMAN, uuid(), shoes);
+			return DB.createDocument(DB_ID, COLLECTION_WOMAN , uuid(), shoes);
 		},
 		onSuccess() {
 			queryClient.invalidateQueries(["woman-shoes"]);

@@ -8,6 +8,8 @@ const { mutate: deleteShoe, isPending: isDeleting } = useDeleteManShoes();
 const { handleDelete } = useHandleDelete();
 
 const onDelete = (shoeId: string) => handleDelete(shoeId, deleteShoe);
+
+console.log(manShoes)
 </script>
 
 <template>
